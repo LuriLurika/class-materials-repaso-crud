@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/', (req, res) => res.render('index'))
 
-module.exports = router
+
+module.exports = app => {
+    app.use('/', require('./base.routes'))
+    app.use('/parks', require('./park.routes'))
+    app.use('/coasters', require('./coaster.routes'))
+}
